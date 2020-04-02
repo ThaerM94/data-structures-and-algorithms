@@ -37,13 +37,12 @@ CHALLENGE 3
 Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
-const alphabetize = (arr) => {
-    arr.sort((a,b)=>{
-       return a > b
-    })
-    return arr
-    
-  };
+const sortByLength = (arr) => {
+  arr.sort((a,b)=>{
+      return a.length > b.length
+  })
+  return arr
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -133,9 +132,9 @@ If two people have the same full name, the younger one should come first.
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a, b) => (a.lastName > b.lastName) ? 1 : (a.lastName === b.lastName) ? ((a.firstName > b.firstName) ? 1 : (a.firstName === b.firstName) ? ((a.age > b.age) ? 1 : -1 ): -1 ): -1)
+  return arr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
 

@@ -32,8 +32,14 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  
+  let ergEx = /\b[A-Z].*?\b/g;
+  let st= str.match(ergEx);
+  let a=[];
+  return st || a ;
+  
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -42,8 +48,16 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let regex =/[A-J]\w+/g;
+  let arr2 = [];
+  arr.forEach(element => {
+    if(element.match(regex)&&!element.match(/\s/g)){
+      arr2.push(element.match(regex)[0]);
+    }
+  });
+  return arr2;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -72,8 +86,11 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  let validator =  /(\w+)\s/g;
+  return str.match(validator);
+
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6

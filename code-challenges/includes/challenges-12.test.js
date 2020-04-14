@@ -170,18 +170,18 @@ const weeklyTemperatures = [
   [65, 56, 55, 52, 55, 62, 57],
 ];
 
+
 const averageDailyTemperature = (weather) => {
   let sum=0;
   let count =0 ;
-  weather.forEach((val)=>{
-  //val []
-    val.forEach((value)=>{
-    //value
-      sum = sum*value;
+  let avg;
+  for(let i = 0 ; i<weather.length;i++){
+    for(let j = 0 ; j<weather[i].length;j++){
+      sum = sum + weather[i][j];
       count = count +1;
-    })
-  })
-  let avg = sum/count;
+      avg = sum/count;
+    }
+  }
   return avg;
 };
 
@@ -203,19 +203,25 @@ let lowestWeeklyTemperatureData = [
   [65, 56, 55, 52, 55, 62, 57],
 ];
 
-const averageDailyTemperature = (weather) => {
-  let sum=0;
-  let count =0 ;
-  let avg;
-  for(let i = 0 ; i<weather.length;i++){
 
-    for(let j = 0 ; j<weather[i].length;j++){
-      sum = sum + weather[i][j];
+const lowestWeeklyAverage = (weather) => {
+  let sum = 0;
+  let count = 0;
+  let firstAvg =0;
+  let secAvg = 100;
+  for(let i=0 ; i<weather.length ; i++){
+    sum = 0 ;
+    count = 0;
+    weather[i].forEach(val =>{
+      sum = sum + val ;
       count = count +1;
-      avg = sum/count;
+      firstAvg = sum/count;
+    })
+    if(firstAvg < secAvg){
+      secAvg=firstAvg;
     }
   }
-  return avg;
+  return secAvg;
 };
 
 
@@ -232,9 +238,21 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let frstArr = str.split(`\n`);
+  let resultArr = [];
+  let sum = 0;
+  for (let i = 0; i < frstArr.length; i++) {
+    frstArr[i] = frstArr[i].split(',');
+  }
+  for (let i = 0; i < frstArr.length; i++){
+    for (let j = 0; j < frstArr[i].length; j++){
+      sum = sum + Number(frstArr[i][j]);
+    }
+    resultArr.push(sum);
+    sum = 0;
+  }
+  return resultArr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 TESTS
 
